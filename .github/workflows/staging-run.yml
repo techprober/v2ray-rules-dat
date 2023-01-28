@@ -261,7 +261,6 @@ jobs:
       - name: Extract artifacts
         shell: bash
         run: |
-          ls
           unzip geoip.zip -d geoip/
           unzip geosite.zip -d geosite/
           mv geoip.zip geoip/ publish/
