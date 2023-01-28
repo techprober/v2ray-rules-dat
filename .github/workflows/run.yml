@@ -2,7 +2,7 @@ name: Build V2Ray rules dat files (Weekly Trigger)
 on:
   schedule:
     # At 00:00 on Sunday every week
-    - cron: "0 0 * * 6"
+    - cron: "0 0 * * 0"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
