@@ -1,13 +1,20 @@
 # 简介
 
-[**V2Ray**](https://github.com/v2fly/v2ray-core) 路由规则文件加强版，可代替 V2Ray 官方 `geoip.dat` 和 `geosite.dat`，兼容 [Shadowsocks-windows](https://github.com/shadowsocks/shadowsocks-windows)、[Xray-core](https://github.com/XTLS/Xray-core)、[Trojan-Go](https://github.com/p4gefau1t/trojan-go) 和 [leaf](https://github.com/eycorsican/leaf)。利用 GitHub Actions 北京时间每周日早上8点自动构建，保证规则最新。
+[**V2Ray**](https://github.com/v2fly/v2ray-core) 路由规则文件加强版，可代替 V2Ray 官方 `geoip.dat` 和 `geosite.dat`，兼容 [Shadowsocks-windows](https://github.com/shadowsocks/shadowsocks-windows)、[Xray-core](https://github.com/XTLS/Xray-core)、[Trojan-Go](https://github.com/p4gefau1t/trojan-go) 和 [leaf](https://github.com/eycorsican/leaf)。利用 GitHub Actions 北京时间每周日早上 8 点自动构建，保证规则最新。
+
+## Fork 新增内容
+
+- **加入 BLUESKYXN_ALL 广告域名**：通过 [@BlueSkyXN/AdGuardHomeRules](https://raw.githubusercontent.com/BlueSkyXN/AdGuardHomeRules/master/all.txt) 获取并加入到 `geosite:category-ads-all` 类别中
+- **加入 EasyList 和 EasyListChina 广告域名**：通过 [@AdblockPlus/EasylistChina+Easylist.txt](https://easylist-downloads.adblockplus.org/easylistchina+easylist.txt) 获取并加入到 `geosite:category-ads-all` 类别中
+- **加入 ADGK 和 Anti-Domain-List 广告域名**：通过 [@217heidai/adblockfilters](https://github.com/217heidai/adblockfilters) 获取并加入到 `geosite:category-ads-all` 类别中
+- **加入 AdGuard DNS Filter 广告域名**：通过 [@AdGuard/DNS-filter](https://kb.adguard.com/en/general/adguard-ad-filters#dns-filter) 获取并加入到 `geosite:category-ads-all` 类别中
 
 ## 规则文件生成方式
 
 ### geoip.dat
 
 - 通过仓库 [@Loyalsoldier/geoip](https://github.com/Loyalsoldier/geoip) 生成
-- 其中全球 IP 地址（IPv4 和 IPv6）来源于 [MaxMind GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/)，`CN`（中国大陆）类别下的 IPv4 地址来源于 [ipip.net](https://github.com/17mon/china_ip_list)
+- 其中全球 IP 地址（IPv4 和 IPv6）来源于 [MaxMind GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/)，`CN`（中国大陆）类别下的 IPv4 地址融合了 [ipip.net](https://github.com/17mon/china_ip_list) 和 [@gaoyifan/china-operator-ip](https://github.com/gaoyifan/china-operator-ip)，`CN`（中国大陆）类别下的 IPv6 地址融合了 [MaxMind GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/) 和 [@gaoyifan/china-operator-ip](https://github.com/gaoyifan/china-operator-ip)
 - 新增类别（方便有特殊需求的用户使用）：
   - `geoip:cloudflare`
   - `geoip:cloudfront`
@@ -31,13 +38,7 @@
   - 基于 [@gfwlist/gfwlist](https://github.com/gfwlist/gfwlist) 数据，通过仓库 [@cokebar/gfwlist2dnsmasq](https://github.com/cokebar/gfwlist2dnsmasq) 生成
   - 加入到 `geosite:gfw` 类别中，供习惯于 PAC 模式并希望使用 [GFWList](https://github.com/gfwlist/gfwlist) 的用户使用
   - 同时加入到 `geosite:geolocation-!cn` 类别中
-- **加入 Greatfire Analyzer 检测到的屏蔽域名**：
-  - 通过仓库 [@Loyalsoldier/cn-blocked-domain](https://github.com/Loyalsoldier/cn-blocked-domain) 获取 [Greatfire Analyzer](https://zh.greatfire.org/analyzer) 检测到的在中国大陆被屏蔽的域名
-  - 加入到 `geosite:greatfire` 类别中，可与上面的 `geosite:gfw` 类别同时使用，以达到域名黑名单的效果
-  - 同时加入到 `geosite:geolocation-!cn` 类别中
-- **加入 BLUESKYXN_ALL 广告域名**：通过 [@BlueSkyXN/AdGuardHomeRules](https://raw.githubusercontent.com/BlueSkyXN/AdGuardHomeRules/master/all.txt) 获取并加入到 `geosite:category-ads-all` 类别中
 - **加入 EasyList 和 EasyListChina 广告域名**：通过 [@AdblockPlus/EasylistChina+Easylist.txt](https://easylist-downloads.adblockplus.org/easylistchina+easylist.txt) 获取并加入到 `geosite:category-ads-all` 类别中
-- **加入 ADGK 和 Anti-Domain-List 广告域名**：通过 [@217heidai/adblockfilters](https://github.com/217heidai/adblockfilters) 获取并加入到 `geosite:category-ads-all` 类别中
 - **加入 AdGuard DNS Filter 广告域名**：通过 [@AdGuard/DNS-filter](https://kb.adguard.com/en/general/adguard-ad-filters#dns-filter) 获取并加入到 `geosite:category-ads-all` 类别中
 - **加入 Peter Lowe 广告和隐私跟踪域名**：通过 [@PeterLowe/adservers](https://pgl.yoyo.org/adservers) 获取并加入到 `geosite:category-ads-all` 类别中
 - **加入 Dan Pollock 广告域名**：通过 [@DanPollock/hosts](https://someonewhocares.org/hosts) 获取并加入到 `geosite:category-ads-all` 类别中
@@ -54,27 +55,50 @@
 
 **下载地址**：
 
-- **geoip.dat**：[https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat](https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat)
-- **geosite.dat**：[https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat](https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat)
-- **直连域名列表 direct-list.txt**：[https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/direct-list.txt](https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/direct-list.txt)
-- **代理域名列表 proxy-list.txt**：[https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/proxy-list.txt](https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/proxy-list.txt)
-- **广告域名列表 reject-list.txt**：[https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/reject-list.txt](https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/reject-list.txt)
-- **Apple 在中国大陆可直连的域名列表 apple-cn.txt**：[https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/apple-cn.txt](https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/apple-cn.txt)
-- **Google 在中国大陆可直连的域名列表 google-cn.txt**：[https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/google-cn.txt](https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/google-cn.txt)
-- **GFWList 域名列表 gfw.txt**：[https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt](https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt)
-- **Greatfire 域名列表 greatfire.txt**：[https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/greatfire.txt](https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/greatfire.txt)
-- **Windows 操作系统使用的隐私跟踪域名列表 win-spy.txt**：[https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/win-spy.txt](https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/win-spy.txt)
-- **Windows 操作系统使用的系统升级域名列表 win-update.txt**：[https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/win-update.txt](https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/win-update.txt)
-- **Windows 操作系统使用的附加隐私跟踪域名列表 win-extra.txt**：[https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/win-extra.txt](https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/win-extra.txt)
+> 如果无法访问域名 `raw.githubusercontent.com`，可以使用第二个地址（`cdn.jsdelivr.net`），但是内容更新会有 12 小时的延迟。
+
+- **geoip.dat**：
+  - [https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat](https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat)
+  - [https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat](https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat)
+- **geosite.dat**：
+  - [https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat](https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat)
+  - [https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat](https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat)
+- **直连域名列表 direct-list.txt**：
+  - [https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/direct-list.txt](https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/direct-list.txt)
+  - [https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/direct-list.txt](https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/direct-list.txt)
+- **代理域名列表 proxy-list.txt**：
+  - [https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/proxy-list.txt](https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/proxy-list.txt)
+  - [https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/proxy-list.txt](https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/proxy-list.txt)
+- **广告域名列表 reject-list.txt**：
+  - [https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/reject-list.txt](https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/reject-list.txt)
+  - [https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/reject-list.txt](https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/reject-list.txt)
+- **Apple 在中国大陆可直连的域名列表 apple-cn.txt**：
+  - [https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/apple-cn.txt](https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/apple-cn.txt)
+  - [https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/apple-cn.txt](https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/apple-cn.txt)
+- **Google 在中国大陆可直连的域名列表 google-cn.txt**：
+  - [https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/google-cn.txt](https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/google-cn.txt)
+  - [https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/google-cn.txt](https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/google-cn.txt)
+- **GFWList 域名列表 gfw.txt**：
+  - [https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt](https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt)
+  - [https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/gfw.txt](https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/gfw.txt)
+- **Windows 操作系统使用的隐私跟踪域名列表 win-spy.txt**：
+  - [https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/win-spy.txt](https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/win-spy.txt)
+  - [https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/win-spy.txt](https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/win-spy.txt)
+- **Windows 操作系统使用的系统升级域名列表 win-update.txt**：
+  - [https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/win-update.txt](https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/win-update.txt)
+  - [https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/win-update.txt](https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/win-update.txt)
+- **Windows 操作系统使用的附加隐私跟踪域名列表 win-extra.txt**：
+  - [https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/win-extra.txt](https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/win-extra.txt)
+  - [https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/win-extra.txt](https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/win-extra.txt)
 
 **使用方式**：
 
-1. 安装适用于自己操作系统的客户端（推荐 [V2Ray 客户端](https://www.v2fly.org/awesome/tools.html#%E7%AC%AC%E4%B8%89%E6%96%B9%E5%9B%BE%E5%BD%A2%E5%AE%A2%E6%88%B7%E7%AB%AF)）
+1. 安装适用于自己操作系统的客户端
 2. 下载本项目的 `geoip.dat` 和 `geosite.dat`
 3. 把下载下来的 `geoip.dat` 和 `geosite.dat` 放入到客户端的规则文件目录，替换掉原来的 `geoip.dat` 和 `geosite.dat`
-4. 如果使用的是 V2Ray 客户端，配置可参考下面 👇👇👇
+4. 如果使用的是 V2Ray v4 版本客户端，配置可参考下面 👇👇👇
 
-## 参考配置
+## 参考配置(仅适用于 V2Ray v4 版本)
 
 ### geoip.dat
 
@@ -138,7 +162,7 @@ steamstatic.com.8686c.com @cn
 对于玩 Steam 国区游戏，想要直连的用户，可以设置类别 `geosite:steam@cn` 为直连，意为将 [steam](https://github.com/v2fly/domain-list-community/blob/master/data/steam) 列表内所有被标记了 `@cn` attribute 的规则（域名）设置为直连。同理，由于 [category-games](https://github.com/v2fly/domain-list-community/blob/master/data/category-games) 列表包含了 `steam`、`ea`、`blizzard`、`epicgames` 和 `nintendo` 等常见的游戏厂商。设置类别 `geosite:category-games@cn` 为直连，即可节省大量服务器流量。
 
 > ⚠️ 注意：在 Routing 配置中，类别越靠前（上），优先级越高，所以 `geosite:category-games@cn` 等所有带有 `@cn` attribute 的规则都要放置在 `geosite:geolocation-!cn` 前（上）面才能生效。
-> 
+>
 > `category-games` 列表内的规则（域名）可能会有疏漏，请留意规则命中情况。如发现遗漏，欢迎到项目 v2fly/domain-list-community 提 [issue](https://github.com/v2fly/domain-list-community/issues) 反馈。
 
 #### 配置参考下面 👇👇👇
@@ -196,7 +220,7 @@ steamstatic.com.8686c.com @cn
     {
       "type": "field",
       "outboundTag": "Proxy",
-      "domain": ["geosite:gfw", "geosite:greatfire"]
+      "domain": ["geosite:gfw"]
     },
     {
       "type": "field",
@@ -244,7 +268,7 @@ steamstatic.com.8686c.com @cn
 }
 ```
 
-### 自用 V2Ray 客户端配置（仅供参考，请根据自身需求酌情修改）
+### 自用 V2Ray v4 版本客户端配置（不适用于 V2Ray v5 及更新的版本）
 
 注意事项：
 
@@ -254,7 +278,7 @@ steamstatic.com.8686c.com @cn
 - 最后，不命中任何路由规则的请求和流量，统统走代理
 - `outbounds` 里的第一个大括号内的配置，即为 V2Ray 代理服务的配置。请根据自身需求进行修改，并参照 V2Ray 官网配置文档中的 [配置 > Outbounds > OutboundObject](https://www.v2fly.org/config/outbounds.html#outboundobject) 部分进行补全
 
-```json
+```jsonc
 {
   "log": {
     "loglevel": "warning"
@@ -411,3 +435,26 @@ steamstatic.com.8686c.com @cn
   }
 }
 ```
+
+## 使用本项目的项目
+
+- [@Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules)
+- [@Loyalsoldier/surge-rules](https://github.com/Loyalsoldier/surge-rules)
+
+## 致谢
+
+- [@Loyalsoldier/geoip](https://github.com/Loyalsoldier/geoip)
+- [@v2fly/domain-list-community](https://github.com/v2fly/domain-list-community)
+- [@Loyalsoldier/domain-list-custom](https://github.com/Loyalsoldier/domain-list-custom)
+- [@felixonmars/dnsmasq-china-list](https://github.com/felixonmars/dnsmasq-china-list)
+- [@gfwlist/gfwlist](https://github.com/gfwlist/gfwlist)
+- [@cokebar/gfwlist2dnsmasq](https://github.com/cokebar/gfwlist2dnsmasq)
+- [@AdblockPlus/EasylistChina+Easylist.txt](https://easylist-downloads.adblockplus.org/easylistchina+easylist.txt)
+- [@AdGuard/DNS-filter](https://kb.adguard.com/en/general/adguard-ad-filters#dns-filter)
+- [@PeterLowe/adservers](https://pgl.yoyo.org/adservers)
+- [@DanPollock/hosts](https://someonewhocares.org/hosts)
+- [@crazy-max/WindowsSpyBlocker](https://github.com/crazy-max/WindowsSpyBlocker)
+
+## 项目 Star 数增长趋势
+
+[![Stargazers over time](https://starchart.cc/Loyalsoldier/v2ray-rules-dat.svg)](https://starchart.cc/Loyalsoldier/v2ray-rules-dat)
