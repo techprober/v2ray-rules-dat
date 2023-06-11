@@ -4,10 +4,15 @@
 
 ## Fork 新增内容
 
-- **加入 BLUESKYXN_ALL 广告域名**：通过 [@BlueSkyXN/AdGuardHomeRules](https://raw.githubusercontent.com/BlueSkyXN/AdGuardHomeRules/master/all.txt) 获取并加入到 `geosite:category-ads-all` 类别中
-- **加入 EasyList 和 EasyListChina 广告域名**：通过 [@AdblockPlus/EasylistChina+Easylist.txt](https://easylist-downloads.adblockplus.org/easylistchina+easylist.txt) 获取并加入到 `geosite:category-ads-all` 类别中
 - **加入 ADGK 和 Anti-Domain-List 广告域名**：通过 [@217heidai/adblockfilters](https://github.com/217heidai/adblockfilters) 获取并加入到 `geosite:category-ads-all` 类别中
 - **加入 AdGuard DNS Filter 广告域名**：通过 [@AdGuard/DNS-filter](https://kb.adguard.com/en/general/adguard-ad-filters#dns-filter) 获取并加入到 `geosite:category-ads-all` 类别中
+- **加入 Anti-AD 广告域名**：通过 [@privacy-protection-tools/anti-AD](https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-domains.txt) 获取并加入到 `geosite:category-ads-all` 类别中
+- **加入 EasyList 和 EasyListChina 广告域名**：通过 [@AdblockPlus/EasylistChina+Easylist.txt](https://easylist-downloads.adblockplus.org/easylistchina+easylist.txt) 获取并加入到 `geosite:category-ads-all` 类别中
+- **加入 BLUESKYXN_ALL 广告域名**：通过 [@BlueSkyXN/AdGuardHomeRules](https://raw.githubusercontent.com/BlueSkyXN/AdGuardHomeRules/master/all.txt) 获取并加入到 `geosite:category-ads-all` 类别中
+- **加入 乘风广告过滤规则 广告域名**：通过 [xinggsf/Adblock-Plus-Rule](https://github.com/xinggsf/Adblock-Plus-Rule/raw/master/rule.txt) 获取并加入到 `geosite:category-ads-all` 类别中
+- **加入 乘风视频广告过滤 广告域名**：通过 [xinggsf/Adblock-Plus-Rule](https://github.com/xinggsf/Adblock-Plus-Rule/raw/master/mv.txt) 获取并加入到 `geosite:category-ads-all` 类别中
+- **加入 uBlock Origin 隱私域名**：通过 [@uBlockOrigin/uAssets](https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt) 获取并加入到 `geosite:category-ads-all` 类别中
+- **加入 uBlock Origin 广告域名**：通过 [@uBlockOrigin/uAssets](https://github.com/uBlockOrigin/uAssets/raw/master/filters/filter.txt) 获取并加入到 `geosite:category-ads-all` 类别中
 
 ## 规则文件生成方式
 
