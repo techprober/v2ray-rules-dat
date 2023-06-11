@@ -40,7 +40,7 @@ jobs:
           echo "XINGSF_VIDEOADS_REJECT_URL=https://github.com/xinggsf/Adblock-Plus-Rule/raw/master/rule.txt" >> $GITHUB_ENV
           echo "UBLOCK_ORIGIN_PRIVACY_REJECT_URL=https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt" >> $GITHUB_ENV
           echo "UBLOCK_ORIGIN_FILTER_REJECT_URL=https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt" >> $GITHUB_ENV
-          echo "NEODEVPRO_ADS_REJECT_URL=https://raw.githubusercontent.com/neodevpro/neodevhost/master/host" >> $GITHUB_ENV
+          echo "NEODEVPRO_ADS_REJECT_URL=https://raw.githubusercontent.com/neodevpro/neodevhost/master/adblocker" >> $GITHUB_ENV
 
       - name: Checkout the "hidden" branch of this repo
         uses: actions/checkout@v3
