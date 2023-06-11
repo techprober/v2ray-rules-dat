@@ -40,6 +40,7 @@ jobs:
           echo "XINGSF_VIDEOADS_REJECT_URL=https://github.com/xinggsf/Adblock-Plus-Rule/raw/master/rule.txt" >> $GITHUB_ENV
           echo "UBLOCK_ORIGIN_PRIVACY_REJECT_URL=https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt" >> $GITHUB_ENV
           echo "UBLOCK_ORIGIN_FILTER_REJECT_URL=https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt" >> $GITHUB_ENV
+          echo "NEODEVPRO_ADS_REJECT_URL=https://raw.githubusercontent.com/neodevpro/neodevhost/master/host" >> $GITHUB_ENV
 
       - name: Checkout the "hidden" branch of this repo
         uses: actions/checkout@v3
@@ -100,6 +101,7 @@ jobs:
           curl -sSL $XINGSF_VIDEOADS_REJECT_URL | perl -ne '/^\|\|([-_0-9a-zA-Z]+(\.[-_0-9a-zA-Z]+){1,64})\^$/ && print "$1\n"' | perl -ne 'print if not /^[0-9]{1,3}(\.[0-9]{1,3}){3}$/' > temp-reject.txt
           curl -sSL $UBLOCK_ORIGIN_PRIVACY_REJECT_URL | perl -ne '/^\|\|([-_0-9a-zA-Z]+(\.[-_0-9a-zA-Z]+){1,64})\^$/ && print "$1\n"' | perl -ne 'print if not /^[0-9]{1,3}(\.[0-9]{1,3}){3}$/' > temp-reject.txt
           curl -sSL $UBLOCK_ORIGIN_FILTER_REJECT_URL | perl -ne '/^\|\|([-_0-9a-zA-Z]+(\.[-_0-9a-zA-Z]+){1,64})\^$/ && print "$1\n"' | perl -ne 'print if not /^[0-9]{1,3}(\.[0-9]{1,3}){3}$/' > temp-reject.txt
+          curl -sSL $NEODEVPRO_ADS_REJECT_URL | perl -ne '/^\|\|([-_0-9a-zA-Z]+(\.[-_0-9a-zA-Z]+){1,64})\^$/ && print "$1\n"' | perl -ne 'print if not /^[0-9]{1,3}(\.[0-9]{1,3}){3}$/' > temp-reject.txt
 
       - name: Reserve `full`, `regexp` and `keyword` type of rules from custom lists to "reserve" files
         run: |
