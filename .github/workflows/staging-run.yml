@@ -15,7 +15,7 @@ jobs:
       - name: Setup Go 1.x.y
         uses: actions/setup-go@v3
         with:
-          go-version: ^1.19
+          go-version: ^1.21
 
       - name: Set variables
         shell: bash
@@ -28,7 +28,9 @@ jobs:
           echo "WIN_SPY=https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt" >> $GITHUB_ENV
           echo "WIN_UPDATE=https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/update.txt" >> $GITHUB_ENV
           echo "WIN_EXTRA=https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/extra.txt" >> $GITHUB_ENV
-          # ads list
+          # extra ip list
+          echo "CHINA_MAX_IP_EXTRA_URL=https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/ChinaMax/ChinaMax_IP.txt" >> $GITHUB_ENV
+          # extra ads list
           echo "PETERLOWE_REJECT_URL=https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=1&mimetype=plaintext" >> $GITHUB_ENV
           echo "DANPOLLOCK_REJECT_URL=https://someonewhocares.org/hosts/hosts" >> $GITHUB_ENV
           echo "ANTI_AD_REJECT_URL=https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-domains.txt" >> $GITHUB_ENV
@@ -119,6 +121,8 @@ jobs:
           cat temp-proxy.txt | sort --ignore-case -u > proxy-list-with-redundant
           cat temp-direct.txt | sort --ignore-case -u > direct-list-with-redundant
           cat temp-reject.txt | sort --ignore-case -u > reject-list-with-redundant
+          # extras
+          cat $CHINA_MAX_DOMAINS_EXTRA_URL | sort --ignore-case -u > direct-list-with-redundant
 
       - name: Remove redundant domains
         run: |
