@@ -295,8 +295,7 @@ jobs:
           draft: false
           prerelease: false
           body: "Release on ${{ env.RELEASE_DATE }}"
-          files: |
-            publish/*
+          file: ./publish/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
