@@ -1,0 +1,2 @@
+bitwarden.com
+bitwarden.eu
