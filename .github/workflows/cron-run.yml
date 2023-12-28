@@ -43,24 +43,24 @@ jobs:
           echo "NEODEVPRO_ADS_REJECT_URL=https://raw.githubusercontent.com/neodevpro/neodevhost/master/adblocker" >> $GITHUB_ENV
 
       - name: Checkout the "hidden" branch of this repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: hidden
 
       - name: Checkout Loyalsoldier/domain-list-custom
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: Loyalsoldier/domain-list-custom
           path: custom
 
       - name: Checkout v2fly/domain-list-community
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: v2fly/domain-list-community
           path: community
 
       - name: Checkout cokebar/gfwlist2dnsmasq
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: cokebar/gfwlist2dnsmasq
           path: gfwlist2dnsmasq
@@ -83,7 +83,6 @@ jobs:
 
       - name: Get and add proxy domains into temp-proxy.txt file
         run: |
-          cat ./gfwlist2dnsmasq/temp-gfwlist.txt | perl -ne '/^((?=^.{3,255})[a-zA-Z0-9][-_a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-_a-zA-Z0-9]{0,62})+)/ && print "$1\n"' > temp-proxy.txt
           curl -sSL $GOOGLE_DOMAINS_URL | perl -ne '/^server=\/([^\/]+)\// && print "$1\n"' >> temp-proxy.txt
           curl -sSL $APPLE_DOMAINS_URL | perl -ne '/^server=\/([^\/]+)\// && print "$1\n"' >> temp-proxy.txt
           curl -sSL ${CUSTOM_PROXY} | grep -Ev ":@cn" | perl -ne '/^(domain):([^:]+)(\n$|:@.+)/ && print "$2\n"' >> temp-proxy.txt
@@ -159,8 +158,10 @@ jobs:
           cp ./community/data/geolocation-\!cn proxy-list.txt
           cp ./community/data/category-ads-all reject-list.txt
 
-      - name: Create google-cn, apple-cn, gfw, greatfire lists
+      - name: Create china-list, google-cn, apple-cn, gfw, greatfire lists
         run: |
+          curl -sSL $CHINA_DOMAINS_URL | perl -ne '/^server=\/([^\/]+)\// && print "$1\n"' > ./community/data/china-list
+          curl -sSL $CHINA_DOMAINS_URL | perl -ne '/^server=\/([^\/]+)\// && print "$1\n"' > china-list.txt
           curl -sSL $GOOGLE_DOMAINS_URL | perl -ne '/^server=\/([^\/]+)\// && print "full:$1\n"' > ./community/data/google-cn
           curl -sSL $APPLE_DOMAINS_URL | perl -ne '/^server=\/([^\/]+)\// && print "full:$1\n"' > ./community/data/apple-cn
           cat ./gfwlist2dnsmasq/temp-gfwlist.txt | perl -ne '/^((?=^.{3,255})[a-zA-Z0-9][-_a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-_a-zA-Z0-9]{0,62})+)/ && print "$1\n"' >> ./community/data/gfw
@@ -178,7 +179,7 @@ jobs:
           install -Dp ./geoip.dat ./publish/geoip.dat
           install -Dp ./geoip.dat.sha256sum ./publish/geoip.dat.sha256sum
           install -Dp ./custom/publish/geosite.dat ./publish/geosite.dat
-          install -p {proxy,direct,reject}-list.txt ./publish/
+          install -p {china-list,proxy,direct,reject}-list.txt ./publish/
           cd ./publish || exit 1
           zip rules.zip {proxy,direct,reject}-list.txt geoip.dat geosite.dat
           sha256sum geosite.dat > geosite.dat.sha256sum
@@ -200,7 +201,7 @@ jobs:
           go-version: ^1.19
 
       - name: Checkout techprober/v2dat
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: techprober/v2dat
 
@@ -265,7 +266,7 @@ jobs:
           echo "RELEASE_DATE=$(date +%Y-%m-%d-%H-%M)" >> $GITHUB_ENV
 
       - name: Checkout the master branch of this repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Copy artifacts from build job to local path
         uses: actions/download-artifact@v3
@@ -287,7 +288,7 @@ jobs:
           mv geosite.zip geosite/ publish/
 
       - name: Release and upload assets
-        uses: softprops/action-gh-release@v0.1.15
+        uses: svenstaro/upload-release-action@v2
         with:
           name: ${{ env.RELEASE_DATE }}
           tag_name: ${{ env.RELEASE_DATE }}
