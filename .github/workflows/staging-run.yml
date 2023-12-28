@@ -121,7 +121,7 @@ jobs:
           cat temp-direct.txt | sort --ignore-case -u > direct-list-with-redundant
           cat temp-reject.txt | sort --ignore-case -u > reject-list-with-redundant
           # extras
-          cat $CHINA_MAX_DOMAINS_EXTRA_URL | sort --ignore-case -u > direct-list-with-redundant
+          cat $CHINA_MAX_DOMAINS_EXTRA_URL | sort --ignore-case -u >> direct-list-with-redundant
 
       - name: Remove redundant domains
         run: |
