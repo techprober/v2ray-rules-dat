@@ -14,6 +14,7 @@
 - **加入 uBlock Origin 隱私域名**：通过 [@uBlockOrigin/uAssets](https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt) 获取并加入到 `geosite:category-ads-all` 类别中
 - **加入 uBlock Origin 广告域名**：通过 [@uBlockOrigin/uAssets](https://github.com/uBlockOrigin/uAssets/raw/master/filters/filter.txt) 获取并加入到 `geosite:category-ads-all` 类别中
 - **加入 NeoDev Host 广告域名**：通过 [@neodevpro/neodevhost](https://raw.githubusercontent.com/neodevpro/neodevhost/master/adblocker) 获取并加入到 `geosite:category-ads-all` 类别中
+- **加入 ClashChinaMax 域名**：通过 [@blackmatrix7/ios_rule_script](https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/ChinaMax/ChinaMax_Domain.txt) 获取并加入到 `geosite:cn` 类别中
 
 ## 规则文件生成方式
 
