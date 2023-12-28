@@ -181,7 +181,7 @@ jobs:
           install -Dp ./geoip.dat ./publish/geoip.dat
           install -Dp ./geoip.dat.sha256sum ./publish/geoip.dat.sha256sum
           install -Dp ./custom/publish/geosite.dat ./publish/geosite.dat
-          install -p {china-list,proxy,direct,reject}-list.txt ./publish/
+          install -p {china,proxy,direct,reject}-list.txt ./publish/
           cd ./publish || exit 1
           zip rules.zip {proxy,direct,reject}-list.txt geoip.dat geosite.dat
           sha256sum geosite.dat > geosite.dat.sha256sum
