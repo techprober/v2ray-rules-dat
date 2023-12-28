@@ -200,7 +200,7 @@ jobs:
       - name: Setup Go 1.x.y
         uses: actions/setup-go@v3
         with:
-          go-version: ^1.19
+          go-version: ^1.21
 
       - name: Checkout techprober/v2dat
         uses: actions/checkout@v4
